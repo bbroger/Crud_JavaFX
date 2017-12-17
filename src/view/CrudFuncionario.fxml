@@ -1,11 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.CrudFuncionarioControl">
+   <children>
+      <TabPane fx:id="abas" layoutX="114.0" layoutY="50.0" onMouseClicked="#gerenciar_abas" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+        <tabs>
+          <Tab fx:id="cadastrar" text="Cadastrar">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="cadastrar_nome" layoutX="154.0" layoutY="48.0" prefHeight="25.0" prefWidth="414.0" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Informe os dados do funcionário" />
+                        <Label layoutX="14.0" layoutY="52.0" text="Nome" AnchorPane.topAnchor="52.0" />
+                        <DatePicker fx:id="cadastrar_nascimento" layoutX="154.0" layoutY="93.0" />
+                        <Label layoutX="18.0" layoutY="97.0" text="Data nascimento" />
+                        <Label layoutX="18.0" layoutY="142.0" text="Cargo" />
+                        <TextField fx:id="cadastrar_cargo" layoutX="154.0" layoutY="138.0" prefHeight="25.0" prefWidth="414.0" />
+                        <Label layoutX="16.0" layoutY="189.0" text="Salário" />
+                        <TextField fx:id="cadastrar_salario" layoutX="156.0" layoutY="185.0" prefHeight="25.0" prefWidth="413.0" />
+                        <Button layoutX="499.0" layoutY="275.0" mnemonicParsing="false" onAction="#cadastrar_funcionario" prefWidth="70.0" text="Cadastrar" />
+                        <Button layoutX="422.0" layoutY="275.0" mnemonicParsing="false" onAction="#cadastrar_limpar" prefWidth="70.0" text="Limpar" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="consultar" text="Consultar">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Consultar funcionários" />
+                        <Label layoutX="14.0" layoutY="49.0" text="Nome" AnchorPane.topAnchor="52.0" />
+                        <TextField fx:id="consultar_funcionario_nome" layoutX="74.0" layoutY="48.0" prefWidth="405.0" />
+                        <Button layoutX="492.0" layoutY="48.0" mnemonicParsing="false" onAction="#consultar_functionario" prefWidth="70.0" text="Consultar" />
+                        <TableView fx:id="consultar_tabela_funcionarios" layoutX="14.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+                          <columns>
+                            <TableColumn fx:id="consultar_fun_id" editable="false" prefWidth="34.0" text="ID" />
+                            <TableColumn fx:id="consultar_fun_nome" editable="false" prefWidth="152.0" text="Nome" />
+                              <TableColumn fx:id="consultar_fun_nascimento" editable="false" text="Nascimento" />
+                              <TableColumn fx:id="consultar_fun_cargo" editable="false" prefWidth="133.0" text="Cargo" />
+                              <TableColumn fx:id="consultar_fun_salario" editable="false" text="Salário" />
+                              <TableColumn fx:id="consultar_fun_criado" editable="false" text="Criado" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="500.0" layoutY="275.0" mnemonicParsing="false" onAction="#deletar_funcionario" prefWidth="70.0" text="Deletar" />
+                        <Button layoutX="422.0" layoutY="275.0" mnemonicParsing="false" onAction="#exibir_aba_atualizar" prefWidth="70.0" text="Atualizar" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="atualizar" disable="true" text="Atualizar">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="atualizar_nome" layoutX="154.0" layoutY="48.0" prefHeight="25.0" prefWidth="414.0" />
+                        <Label layoutX="14.0" layoutY="52.0" text="Nome" AnchorPane.topAnchor="52.0" />
+                        <DatePicker fx:id="atualizar_nascimento" layoutX="154.0" layoutY="93.0" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Atualize os dados do funcionário" />
+                        <Label layoutX="18.0" layoutY="142.0" text="Cargo" />
+                        <TextField fx:id="atualizar_cargo" layoutX="154.0" layoutY="138.0" prefHeight="25.0" prefWidth="414.0" />
+                        <Label layoutX="16.0" layoutY="189.0" text="Salário" />
+                        <Button layoutX="499.0" layoutY="275.0" mnemonicParsing="false" onAction="#atualizar_funcionario" prefWidth="70.0" text="Atualizar" />
+                        <TextField fx:id="atualizar_salario" layoutX="156.0" layoutY="185.0" prefHeight="25.0" prefWidth="413.0" />
+                        <Label layoutX="18.0" layoutY="97.0" text="Data nascimento" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="14.0" layoutY="14.0" text="Crud de Funcionários" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
